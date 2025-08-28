@@ -1,49 +1,75 @@
-﻿static void Fight()
+﻿static void FightSim()
 {
-
-    int p1Hp = 100;
-    int p2Hp = 100;
-
-    string p1Name = "Elis";
-    string p2Name = "Oscar";
-    bool running = true;
-    while (running)
+    bool programRunning = true;
+    while (programRunning)
     {
-        Console.WriteLine($"{p1Name}: {p1Hp} HP");
-        Console.WriteLine($"{p2Name}: {p2Hp} HP");
-        p2Hp -= Random.Shared.Next(10, 25);
-        p1Hp -= Random.Shared.Next(10, 25);
-        Console.WriteLine("Press Enter to continue or type 'exit' to quit.");
-        string loop = Console.ReadLine();
-        Console.Clear();
-        if (loop == "exit" || p1Hp <= 0 || p2Hp <= 0)
+        string p1Name = "";
+        string p2Name = "Oscar";
+        while (true)
         {
-            if (p1Hp <= 0 && p2Hp <= 0)
-            {
-                Console.WriteLine("It's a draw!");
-            }
-            else if (p1Hp <= 0)
-            {
-                Console.WriteLine($"{p2Name} wins! With {p2Hp}HP kvar.");
-            }
-            else if (p2Hp <= 0)
-            {
-                Console.WriteLine($"{p1Name} wins! With {p1Hp}HP kvar.");
-            }
-            Console.WriteLine("Press Enter to restart or Write exit to quit.");
-            string con = Console.ReadLine();
+            Console.WriteLine("Antal spelare 1 eller 2?");
+            string players = Console.ReadLine();
             Console.Clear();
-            if (con == "exit")
+            if (players == "1")
             {
-                running = false;
+                Console.WriteLine("Skriv ditt namn:");
+                p1Name = Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("Du spelar mot Oscar.");
+                break;
+            }
+            else if (players == "2")
+            {
+                Console.WriteLine("Skriv spelare 1:");
+                p1Name = Console.ReadLine();
+                Console.WriteLine("Skriv spelare 2:");
+                p2Name = Console.ReadLine();
+                Console.Clear();
+                break;
             }
             else
             {
-                p1Hp = 100;
-                p2Hp = 100;
+                Console.Clear();
+                Console.WriteLine("Felaktigt val, försök igen.");
+                Thread.Sleep(1500);
+                Console.Clear();
             }
         }
+
+        int p1Hp = 100, p2Hp = 100;
+        while (p1Hp >= 0 && p2Hp >= 0)
+        {
+            int p1 = Random.Shared.Next(10, 25);
+            int p2 = Random.Shared.Next(10, 25);
+            p2Hp -= p1;
+            p1Hp -= p2;
+            Console.WriteLine($"{p1Name}: {p1Hp} HP | Made {p1} Damage!");
+            Console.WriteLine($"{p2Name}: {p2Hp} HP | Made {p2} Damage!");
+            if (p1Hp <= 0 || p2Hp <= 0)
+            {
+                p1Hp = 0;
+                p2Hp = 0;
+                break;
+            }
+            Console.ReadLine();
+            Console.Clear();
+        }
+        Console.Clear();
+        // svar
+        if (p1Hp <= 0 && p2Hp <= 0)
+            Console.WriteLine("Oavgjort!");
+        else if (p1Hp <= 0)
+            Console.WriteLine($"{p2Name} vinner med {p2Hp} HP kvar!");
+        else
+            Console.WriteLine($"{p1Name} vinner med {p1Hp} HP kvar!");
+
+        // Spela igen?
+        Console.WriteLine("Tryck Enter för att spela igen eller skriv 'exit' för att avsluta.");
+        string again = Console.ReadLine();
+        if (again.ToLower() == "exit")
+            programRunning = false;
+        Console.Clear();
     }
 }
 
-Fight();
+FightSim();

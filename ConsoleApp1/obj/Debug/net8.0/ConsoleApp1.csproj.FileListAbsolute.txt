@@ -12,3 +12,4 @@ C:\Users\teo.erfassjosefsson\programering 1 med mikael\Fight sim (Repetition)\Co
 C:\Users\teo.erfassjosefsson\programering 1 med mikael\Fight sim (Repetition)\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.pdb
 C:\Users\teo.erfassjosefsson\programering 1 med mikael\Fight sim (Repetition)\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.genruntimeconfig.cache
 C:\Users\teo.erfassjosefsson\programering 1 med mikael\Fight sim (Repetition)\ConsoleApp1\obj\Debug\net8.0\ref\ConsoleApp1.dll
+C:\Users\teo.erfassjosefsson\programering 1 med mikael\Fight sim (Repetition)\ConsoleApp1\obj\Debug\net8.0\ConsoleApp1.sourcelink.json
